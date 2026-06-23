@@ -91,6 +91,24 @@ def agendar():
             salvar()
             print('agendamento feito com sucesso.')
 
+def buscar():
+
+    nome = str(input('Digite o nome do agendamento: '))
+    telefone = input('Digite o telefone do agendamento: ')
+
+    agendamentos = dados['agendamentos']
+    cadastros = dados['cadastros']
+
+    for cad in cadastros:
+        for ag in agendamentos:
+            if nome == cad['nome'] and telefone == cad['telefone']:
+                if cad['id'] == ag['id_ag']:
+                    print(f'o agendamento de {cad['nome']} é na data: {ag['data']} ás {ag['horario']}')
+
+            else:
+                print('agendamento não encontrado.')
+
+
 def excluir():
 
     cadastros = dados['cadastros']
@@ -107,6 +125,29 @@ def excluir():
                     print('agendamento excluido com sucesso.')
                     salvar()
 
+def editar():
+
+    nome = str(input('Digite o nome do agendamento: '))
+    telefone = input('Digite o telefone do agendamento: ')
+
+    cadastros = dados['cadastros']
+    agendamentos = dados['agendamentos']
+
+    for cad in cadastros:
+        for ag in agendamentos:
+            if nome == cad['nome'] and telefone == cad['telefone']:
+                if cad['id'] == ag['id_ag']:
+
+                    nova_data = input('Digite a nova data do agendamento: ')
+                    nova_hora = input('Digite o novo horario do agendamento: ')
+
+                    ag['data'] = nova_data
+                    ag['horario'] = nova_hora
+                    salvar()
+                    print('agendamento atualizado com sucesso.')
+
+            else:
+                print('agendamento não encontrado.')
 
 
 

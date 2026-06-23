@@ -83,6 +83,28 @@ def excluir():
             print('cliente não encontrado')
             print('-=' * 11)
 
+def editar():
+    nome = str(input('digite o nome: '))
+    telefone = input('digite o telefone: ')
+
+    cadastros = dados['cadastros']
+
+    for cad in cadastros:
+        if nome == cad['nome'] and telefone == cad['telefone']:
+
+            novo_nome = str(input('digite o novo nome: '))
+            novo_telefone = input('digite o novo telefone: ')
+
+            cad['nome'] = novo_nome
+            cad['telefone'] = novo_telefone
+            salvar()
+            print('Novos dados atualizados com sucesso.')
+
+        else:
+            print('cadastro não encontrado.')
+
+
+
 
 
 
